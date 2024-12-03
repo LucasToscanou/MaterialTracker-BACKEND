@@ -87,13 +87,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-    # 'DBMTCars': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'mtcars.sqlite3',
-    # },
 }
 
-DATABASE_ROUTERS = ["MaterialTrackerSite.db_router.DBRouter"]
+# DATABASE_ROUTERS = ["MaterialTrackerSite.db_router.DBRouter"]
 
 
 # Password validation
@@ -162,6 +158,8 @@ REST_FRAMEWORK = {
 # Para permitir CORS
 CORS_ORIGIN_WHITELIST = [
     'http://0.0.0.0:8080',
+    'http://0.0.0.0:8000',
+    'http://127.0.0.1:5500',
     'http://127.0.0.1:8080',
     'http://localhost:8080',
     # Adicione outras origens permitidas, se necessário
