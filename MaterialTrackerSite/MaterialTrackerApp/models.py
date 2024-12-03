@@ -2,13 +2,16 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.core.exceptions import ValidationError
+from django.utils.timezone import now
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField()
+# class UserProfile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     email = models.EmailField(default="user@email.com")
+#     project = models.ForeignKey('Project', on_delete=models.CASCADE, default=1)
+#     avatar = models.ImageField()
     
-    def __str__(self):
-        return self.user.email
+#     def __str__(self):
+#         return self.user.email
     
 class Project(models.Model):
     name = models.CharField(max_length=200)
@@ -33,11 +36,13 @@ class Material(models.Model):
     description = models.TextField(blank=True)
     
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    main_img = models.ImageField(default="{% static 'img/MaterialTrackerApp/generic_user.png' %}", blank=True)
+    main_img = models.ImageField(upload_to='materials/', default="{% static 'img/MaterialTrackerApp/generic_user.png' %}", blank=True)
+    
+    
     current_location = models.ForeignKey(Location, on_delete=models.CASCADE)
     cost = models.FloatField()
     currency = models.TextField(blank=True)
-    quality_exp_date = models.DateTimeField(default=timezone.now)
+    quality_exp_date = models.DateField(default=now)
 
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)

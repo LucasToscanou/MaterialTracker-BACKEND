@@ -18,6 +18,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 
 
+
 class CustomAuthToken(ObtainAuthToken):
     @swagger_auto_schema(
         operation_summary='Obter o token de autenticação',
@@ -223,6 +224,7 @@ class CustomRegisterUser(APIView):
         },
     )
     def post(self, request, *args, **kwargs):
+        print(request.data)
         serializer = RegisterUserSerializer(data=request.data)
         if serializer.is_valid():
             # Create new user

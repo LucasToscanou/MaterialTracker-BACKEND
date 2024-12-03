@@ -8,9 +8,10 @@ app_name = 'MaterialTrackerApp'
 
 urlpatterns = [
     path("material/list/", views.MaterialView.as_view(), name='material-list'),
+    path("material/list/<int:pk>/", views.MaterialDetailView.as_view(), name='material-detail'),
     path("material/create/", views.MaterialCreateView.as_view(), name='material-create'),
     path('projects/', views.ProjectView.as_view(), name='project-list'),
-    path('userprofiles/', views.UserProfileView.as_view(), name='userprofile-list'),
+    # path('userprofiles/', views.UserProfileView.as_view(), name='userprofile-list'),
     path('locations/', views.LocationView.as_view(), name='location-list'),
     path('materialimgs/', views.MaterialImgView.as_view(), name='materialimg-list'),
     path('currencies/', views.CurrencyView.as_view(), name='currency-list'),

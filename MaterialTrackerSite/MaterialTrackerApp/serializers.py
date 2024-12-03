@@ -25,11 +25,6 @@ class MTMaterialSerializerCreateItem(serializers.ModelSerializer):
         ]
         read_only_fields = ['id', 'created_at', 'updated_at']
 
-    def validate_quality_exp_date(self, value):
-        """Ensure quality_exp_date is not in the past."""
-        if value < timezone.now():
-            raise serializers.ValidationError("Quality expiration date cannot be in the past.")
-        return value
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -52,7 +47,7 @@ class CurrencySerializer(serializers.ModelSerializer):
         model = Currency
         fields = '__all__'
 
-class UserProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserProfile
-        fields = '__all__'
+# class UserProfileSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = UserProfile
+#         fields = '__all__'
